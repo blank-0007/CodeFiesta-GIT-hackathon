@@ -44,4 +44,4 @@ build-backend = "setuptools.build_meta"
 include = ["app*"]
 
 [tool.vercel]
-entrypoint = "app.main:app"
+entrypoint = "main:app"
