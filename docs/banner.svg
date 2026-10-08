@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070A12"/>
+      <stop offset="50%" stop-color="#0B0F19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <radialGradient id="cyanGlow" cx="15%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="violetGlow" cx="85%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="emeraldGlow" cx="50%" cy="85%" r="45%">
+      <stop offset="0%" stop-color="#34D399" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Text Gradients -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="30%" stop-color="#22D3EE"/>
+      <stop offset="70%" stop-color="#C084FC"/>
+      <stop offset="100%" stop-color="#E879F9"/>
+    </linearGradient>
+
+    <linearGradient id="badgeGradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0891B2" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <linearGradient id="badgeGradViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#A78BFA" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <linearGradient id="badgeGradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <linearGradient id="badgeGradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#FBBF24" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <linearGradient id="logoBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="50%" stop-color="#A78BFA"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+
+    <!-- Subtle Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.5" stroke-opacity="0.3"/>
+      <circle cx="40" cy="0" r="1" fill="#475569" fill-opacity="0.4"/>
+    </pattern>
+
+    <!-- Filters -->
+    <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1280" height="360" rx="16" fill="url(#bgGrad)"/>
+  <rect width="1280" height="360" rx="16" fill="url(#cyanGlow)"/>
+  <rect width="1280" height="360" rx="16" fill="url(#violetGlow)"/>
+  <rect width="1280" height="360" rx="16" fill="url(#emeraldGlow)"/>
+  <rect width="1280" height="360" rx="16" fill="url(#grid)"/>
+
+  <!-- Border Frame -->
+  <rect x="1" y="1" width="1278" height="358" rx="15" fill="none" stroke="#334155" stroke-width="1.2" stroke-opacity="0.6"/>
+  <rect x="2" y="2" width="1276" height="356" rx="14" fill="none" stroke="url(#titleGrad)" stroke-width="1" stroke-opacity="0.25"/>
+
+  <!-- Decorative Network Nodes / Graph Lines -->
+  <g stroke="#475569" stroke-opacity="0.35" stroke-width="1">
+    <line x1="880" y1="60" x2="1000" y2="100" stroke-dasharray="4 4"/>
+    <line x1="1000" y1="100" x2="1140" y2="70"/>
+    <line x1="1000" y1="100" x2="1060" y2="180"/>
+    <line x1="1060" y1="180" x2="1180" y2="200" stroke-dasharray="4 4"/>
+    <line x1="940" y1="220" x2="1060" y2="180"/>
+  </g>
+  <g fill="#A78BFA" fill-opacity="0.7">
+    <circle cx="880" cy="60" r="3"/>
+    <circle cx="1000" cy="100" r="4" fill="#22D3EE"/>
+    <circle cx="1140" cy="70" r="3.5" fill="#34D399"/>
+    <circle cx="1060" cy="180" r="4.5" fill="#A78BFA"/>
+    <circle cx="1180" cy="200" r="3" fill="#FB923C"/>
+    <circle cx="940" cy="220" r="3.5" fill="#22D3EE"/>
+  </g>
+
+  <!-- Left Logo & Branding Group -->
+  <g transform="translate(60, 52)">
+    <!-- Logo Badge Outer Glow -->
+    <rect x="-4" y="-4" width="96" height="96" rx="22" fill="none" stroke="url(#logoBorder)" stroke-width="2.5" opacity="0.85" filter="url(#glowEffect)"/>
+    <rect x="0" y="0" width="88" height="88" rx="18" fill="#111827"/>
+    <rect x="0" y="0" width="88" height="88" rx="18" fill="url(#titleGrad)" fill-opacity="0.08"/>
+
+    <!-- Ledger Bars (Cyan) -->
+    <line x1="22" y1="30" x2="50" y2="30" stroke="#22D3EE" stroke-width="5" stroke-linecap="round"/>
+    <line x1="22" y1="44" x2="66" y2="44" stroke="#22D3EE" stroke-width="5" stroke-linecap="round"/>
+    <line x1="22" y1="58" x2="44" y2="58" stroke="#22D3EE" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- AI Sparkle ✦ (Violet / Rose) -->
+    <circle cx="64" cy="30" r="8" fill="#A78BFA" fill-opacity="0.25"/>
+    <path d="M 64 22 Q 64 30 72 30 Q 64 30 64 38 Q 64 30 56 30 Q 64 30 64 22 Z" fill="#C084FC"/>
+    <circle cx="64" cy="30" r="2" fill="#FFFFFF"/>
+
+    <!-- Title & Tagline -->
+    <text x="110" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="54" font-weight="900" fill="url(#titleGrad)" letter-spacing="-1">ReconAI</text>
+    <text x="332" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#22D3EE" letter-spacing="1.5">v1.0 • HACKATHON EDITION</text>
+
+    <text x="112" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="18" font-weight="500" fill="#94A3B8" letter-spacing="-0.2">
+      Automated Bank Reconciliation &amp; Autonomous Anomaly Investigation Agent
+    </text>
+
+    <!-- Sub-description line -->
+    <text x="112" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="400" fill="#64748B">
+      <tspan fill="#34D399" font-weight="600">Deterministic rules</tspan> clear the volume. 
+      <tspan fill="#C084FC" font-weight="600">Gemini LLM ✦</tspan> investigates anomalies. 
+      <tspan fill="#38BDF8" font-weight="600">Humans</tspan> authorize the outliers.
+    </text>
+  </g>
+
+  <!-- Feature Badges Strip (Bottom row) -->
+  <g transform="translate(60, 230)">
+    <!-- Badge 1: Multi-Pass Matcher -->
+    <g transform="translate(0, 0)">
+      <rect width="216" height="52" rx="12" fill="#131D31" stroke="#0891B2" stroke-width="1.2"/>
+      <rect width="216" height="52" rx="12" fill="url(#badgeGradCyan)"/>
+      <circle cx="24" cy="26" r="10" fill="#0891B2" fill-opacity="0.3"/>
+      <text x="24" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#22D3EE" text-anchor="middle" font-weight="bold">⚡</text>
+      <text x="44" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#F1F5F9">Multi-Pass Matcher</text>
+      <text x="44" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="500" fill="#94A3B8">P1 Exact → P4 Group Sum</text>
+    </g>
+
+    <!-- Badge 2: Gemini Agent ✦ -->
+    <g transform="translate(230, 0)">
+      <rect width="232" height="52" rx="12" fill="#191735" stroke="#7C3AED" stroke-width="1.2"/>
+      <rect width="232" height="52" rx="12" fill="url(#badgeGradViolet)"/>
+      <circle cx="24" cy="26" r="10" fill="#7C3AED" fill-opacity="0.3"/>
+      <text x="24" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#C084FC" text-anchor="middle" font-weight="bold">✦</text>
+      <text x="44" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#F1F5F9">Gemini Agent ✦</text>
+      <text x="44" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="500" fill="#94A3B8">5 Tools + Grounded Evidence</text>
+    </g>
+
+    <!-- Badge 3: 10 Detectors & Noisy-OR -->
+    <g transform="translate(476, 0)">
+      <rect width="224" height="52" rx="12" fill="#231A1A" stroke="#DC2626" stroke-width="1.2" stroke-opacity="0.8"/>
+      <rect width="224" height="52" rx="12" fill="#B91C1C" fill-opacity="0.1"/>
+      <circle cx="24" cy="26" r="10" fill="#DC2626" fill-opacity="0.3"/>
+      <text x="24" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#F87171" text-anchor="middle" font-weight="bold">🛡️</text>
+      <text x="44" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#F1F5F9">10 Risk Detectors</text>
+      <text x="44" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="500" fill="#94A3B8">Fraud · Noisy-OR Scoring</text>
+    </g>
+
+    <!-- Badge 4: Zero-Unexplained Lock -->
+    <g transform="translate(714, 0)">
+      <rect width="216" height="52" rx="12" fill="#112520" stroke="#059669" stroke-width="1.2"/>
+      <rect width="216" height="52" rx="12" fill="url(#badgeGradEmerald)"/>
+      <circle cx="24" cy="26" r="10" fill="#059669" fill-opacity="0.3"/>
+      <text x="24" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#34D399" text-anchor="middle" font-weight="bold">🔒</text>
+      <text x="44" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#F1F5F9">₹0.00 Integrity Lock</text>
+      <text x="44" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="500" fill="#94A3B8">Strict Balance Conservation</text>
+    </g>
+
+    <!-- Badge 5: Hash Chain Audit -->
+    <g transform="translate(944, 0)">
+      <rect width="216" height="52" rx="12" fill="#271F15" stroke="#D97706" stroke-width="1.2"/>
+      <rect width="216" height="52" rx="12" fill="url(#badgeGradAmber)"/>
+      <circle cx="24" cy="26" r="10" fill="#D97706" fill-opacity="0.3"/>
+      <text x="24" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#FBBF24" text-anchor="middle" font-weight="bold">📜</text>
+      <text x="44" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="700" fill="#F1F5F9">Audit Hash Chain</text>
+      <text x="44" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="500" fill="#94A3B8">SHA-256 Tamper Evident</text>
+    </g>
+  </g>
+
+  <!-- Status Pulse Dot (Top Right) -->
+  <g transform="translate(1160, 42)">
+    <circle cx="0" cy="0" r="6" fill="#34D399">
+      <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="11" fill="none" stroke="#34D399" stroke-width="1.5" opacity="0.5">
+      <animate attributeName="r" values="6;16" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="14" y="4" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="700" fill="#34D399" letter-spacing="0.5">SYSTEM ACTIVE</text>
+  </g>
+</svg>
