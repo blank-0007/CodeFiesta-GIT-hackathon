@@ -1,21 +1,27 @@
 import { NavLink } from "react-router-dom";
 import {
+  Building2,
   FileBarChart2,
   Inbox,
+  Laptop,
   LayoutDashboard,
+  Moon,
   PanelLeftClose,
   PanelLeftOpen,
   Play,
   ScrollText,
   Settings,
   SlidersHorizontal,
+  Sun,
   type LucideIcon,
 } from "lucide-react";
 import { useReviewQueue } from "@/api/queries";
 import { Sheet, SheetContent } from "@/components/ui/dialog";
 import { Tip } from "@/components/ui/menus";
-import { useUiStore } from "@/lib/store";
+import { useUiStore, type Theme } from "@/lib/store";
+import { ROLES } from "@/lib/permissions";
 import { cn } from "@/lib/utils";
+import { ORGS } from "./Topbar";
 import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { DialogTitle } from "@radix-ui/react-dialog";
 
@@ -151,18 +157,63 @@ export function Sidebar() {
 export function MobileNav() {
   const open = useUiStore((s) => s.mobileNavOpen);
   const set = useUiStore((s) => s.set);
+  const role = useUiStore((s) => s.role);
+  const orgId = useUiStore((s) => s.orgId);
+  const theme = useUiStore((s) => s.theme);
+  const org = ORGS.find((o) => o.id === orgId) ?? ORGS[0];
+
+  const nextTheme: Record<Theme, Theme> = { dark: "light", light: "system", system: "dark" };
+  const ThemeIcon = theme === "dark" ? Moon : theme === "light" ? Sun : Laptop;
+
   return (
     <Sheet open={open} onOpenChange={(o) => set({ mobileNavOpen: o })}>
-      <SheetContent side="left" width={260} className="bg-surface p-0" aria-describedby={undefined}>
+      <SheetContent side="left" width={280} className="flex h-full flex-col bg-surface p-0" aria-describedby={undefined}>
         <VisuallyHidden.Root>
           <DialogTitle>Navigation</DialogTitle>
         </VisuallyHidden.Root>
-        <div className="flex h-14 items-center border-b px-4">
+        <div className="flex h-14 items-center justify-between border-b px-4">
           <Logo />
         </div>
-        <nav aria-label="Main" className="px-3 py-3">
+
+        {/* Organization card for mobile */}
+        <div className="border-b bg-surface-2/40 px-4 py-2.5">
+          <div className="flex items-center gap-2">
+            <Building2 className="h-4 w-4 shrink-0 text-sys" />
+            <div className="min-w-0 flex-1">
+              <div className="truncate text-xs font-semibold">{org.name}</div>
+              <div className="num truncate text-[11px] text-muted-foreground">{org.accounts}</div>
+            </div>
+          </div>
+        </div>
+
+        <nav aria-label="Main" className="flex-1 overflow-y-auto px-3 py-3 touch-scroll">
           <NavList onNavigate={() => set({ mobileNavOpen: false })} />
         </nav>
+
+        {/* User profile & theme footer */}
+        <div className="border-t bg-surface-2/30 p-3 pb-safe">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex min-w-0 items-center gap-2">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-sys/70 to-ai/70 text-2xs font-semibold text-white">
+                PS
+              </span>
+              <div className="min-w-0 leading-tight">
+                <span className="block truncate text-xs font-medium">Priya Sharma</span>
+                <span className="block truncate text-2xs text-muted-foreground">{ROLES.find((r) => r.id === role)?.label}</span>
+              </div>
+            </div>
+            <Tip content={`Theme: ${theme}`}>
+              <button
+                type="button"
+                className="flex h-8 w-8 items-center justify-center rounded-md border border-border/80 text-muted-foreground hover:bg-surface hover:text-foreground"
+                aria-label={`Current theme: ${theme}. Switch to ${nextTheme[theme]}`}
+                onClick={() => set({ theme: nextTheme[theme] })}
+              >
+                <ThemeIcon className="h-4 w-4" />
+              </button>
+            </Tip>
+          </div>
+        </div>
       </SheetContent>
     </Sheet>
   );

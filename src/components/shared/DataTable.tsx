@@ -207,8 +207,8 @@ export function DataTable<T>({
           )}
         </div>
       )}
-      <div ref={scrollRef} className="relative overflow-auto" style={{ maxHeight }}>
-        <table className="w-full border-separate border-spacing-0 text-sm" aria-label={ariaLabel} aria-rowcount={rows.length + 1}>
+      <div ref={scrollRef} className="relative overflow-auto touch-scroll" style={{ maxHeight }}>
+        <table className="w-full min-w-[640px] border-separate border-spacing-0 text-sm" aria-label={ariaLabel} aria-rowcount={rows.length + 1}>
           <thead className="sticky top-0 z-10 bg-surface">
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id}>
@@ -331,11 +331,12 @@ export function DataTable<T>({
       </div>
       {footer ?? (
         !body && (
-          <div className="flex items-center justify-between border-t px-3 py-1.5 text-2xs text-muted-foreground">
+          <div className="flex flex-wrap items-center justify-between gap-1 border-t px-3 py-1.5 text-2xs text-muted-foreground">
             <span>
               {rows.length.toLocaleString()} row{rows.length === 1 ? "" : "s"}
               {selectable && Object.keys(rowSelection ?? {}).length > 0 && ` · ${Object.keys(rowSelection ?? {}).length} selected`}
             </span>
+            <span className="text-2xs text-muted-foreground/60 sm:hidden">Swipe horizontally for all columns →</span>
           </div>
         )
       )}

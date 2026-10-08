@@ -297,7 +297,7 @@ export function PageHeader({
       <div className="min-w-0">
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
         <div className="flex flex-wrap items-center gap-2">
-          <h1 className="truncate text-xl font-semibold tracking-tight">{title}</h1>
+          <h1 className="text-lg font-semibold tracking-tight break-words sm:text-xl">{title}</h1>
           {badge}
         </div>
         {description && <p className="mt-0.5 text-sm text-muted-foreground">{description}</p>}

@@ -212,7 +212,7 @@ export const TabsList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={cn("flex items-center gap-1 overflow-x-auto border-b", className)}
+    className={cn("flex items-center gap-1 overflow-x-auto border-b touch-scroll no-scrollbar", className)}
     {...props}
   />
 ));

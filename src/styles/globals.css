@@ -115,6 +115,28 @@
     background: linear-gradient(90deg, transparent, rgb(var(--foreground) / 0.06), transparent);
     animation: shimmer 1.4s infinite;
   }
+
+  /* Mobile and iPad touch & safe-area utilities */
+  .touch-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  .pb-safe {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .pt-safe {
+    padding-top: max(0.75rem, env(safe-area-inset-top, 0px));
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @keyframes shimmer {

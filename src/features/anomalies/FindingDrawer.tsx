@@ -64,8 +64,9 @@ export function FindingDrawer({
         <div className="flex items-center gap-2 border-b px-4 py-3">
           <div className="min-w-0">
             <DialogTitle className="num text-sm font-semibold">{findingId}</DialogTitle>
-            <DialogDescription className="text-2xs text-muted-foreground">
-              {idx >= 0 ? `${idx + 1} of ${ids.length}` : ""} · <KeyboardHint keys={["J"]} /> next <KeyboardHint keys={["K"]} /> previous
+            <DialogDescription className="truncate text-2xs text-muted-foreground">
+              {idx >= 0 ? `${idx + 1} of ${ids.length}` : ""}
+              <span className="hidden sm:inline"> · <KeyboardHint keys={["J"]} /> next <KeyboardHint keys={["K"]} /> previous</span>
             </DialogDescription>
           </div>
           <div className="ml-auto flex items-center gap-1">
@@ -93,7 +94,7 @@ export function FindingDrawer({
             </Button>
           </div>
         </div>
-        <div className="flex-1 overflow-y-auto p-4">
+        <div className="flex-1 overflow-y-auto p-4 pb-safe touch-scroll">
           {findingId && (
             <FindingDetail
               key={findingId}

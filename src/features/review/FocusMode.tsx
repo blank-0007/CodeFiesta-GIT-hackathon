@@ -42,7 +42,7 @@ export function FocusMode({ items, onExit }: { items: ReviewItem[]; onExit: () =
 
   return (
     <div role="dialog" aria-modal="true" aria-label="Focus review mode" className="fixed inset-0 z-50 flex flex-col bg-background">
-      <header className="flex flex-wrap items-center gap-3 border-b px-4 py-3 md:px-6">
+      <header className="flex flex-wrap items-center gap-3 border-b px-4 py-3 pt-safe md:px-6">
         <div className="min-w-0">
           <p className="text-sm font-semibold">Focus review</p>
           <p className="num text-xs text-muted-foreground" aria-live="polite">
@@ -66,7 +66,7 @@ export function FocusMode({ items, onExit }: { items: ReviewItem[]; onExit: () =
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto px-3 py-4 md:px-6">
+      <div className="flex-1 overflow-y-auto px-3 py-4 pb-safe touch-scroll md:px-6">
         {finished ? (
           <div className="mx-auto flex max-w-md flex-col items-center py-20 text-center">
             <PartyPopper className="h-10 w-10 text-ok" aria-hidden />

@@ -26,6 +26,7 @@ export const axisProps = {
   tick: { fontSize: 11, fill: "rgb(var(--muted-foreground))" },
   tickLine: false,
   axisLine: { stroke: "rgb(var(--border))" },
+  minTickGap: 10,
 } as const;
 
 /** Accessible chart wrapper: role=img with a text summary for screen readers. */

@@ -178,7 +178,7 @@ export default function NewRunWizard() {
             </ul>
           )}
 
-          <div className="sticky bottom-0 -mx-4 mt-6 flex items-center justify-between gap-2 border-t bg-background/90 px-4 py-3 backdrop-blur md:-mx-6 md:px-6 lg:-mx-8 lg:px-8">
+          <div className="sticky bottom-0 -mx-4 mt-6 flex items-center justify-between gap-2 border-t bg-background/90 px-4 py-3 pb-safe backdrop-blur md:-mx-6 md:px-6 lg:-mx-8 lg:px-8">
             <Button variant="ghost" onClick={step === 0 ? () => navigate("/runs") : back}>
               <ArrowLeft /> {step === 0 ? "Cancel" : "Back"}
             </Button>

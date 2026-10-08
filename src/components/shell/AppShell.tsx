@@ -53,7 +53,7 @@ export function AppShell() {
       <MobileNav />
       <div className="flex min-w-0 flex-1 flex-col">
         <Topbar />
-        <main id="main" tabIndex={-1} className="flex-1 px-4 py-5 focus:outline-none md:px-6 lg:px-8">
+        <main id="main" tabIndex={-1} className="flex-1 px-3 py-4 pb-safe focus:outline-none sm:px-4 sm:py-5 md:px-6 lg:px-8">
           <div className="mx-auto max-w-[1600px]">
             <ErrorBoundary resetKey={location.pathname}>
               <Suspense fallback={<PageFallback />}>

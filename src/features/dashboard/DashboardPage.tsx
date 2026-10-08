@@ -96,7 +96,7 @@ export default function DashboardPage() {
         }
       />
 
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 2xl:grid-cols-6">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
         <StatCard loading={isLoading} label="Runs this month" icon={Play} tone="sys" value={data?.runsThisMonth ?? 0} sub={format(new Date(), "MMMM yyyy")} />
         <StatCard loading={isLoading} label="Auto-match rate" icon={Gauge} tone="sys" help="Share of bank transactions matched automatically at ≥ 90% confidence." value={data ? pct(data.autoMatchRate) : ""} sub={data && data.trend.length > 1 ? `${data.trend.at(-1)!.autoMatchRate >= data.trend.at(-2)!.autoMatchRate ? "▲" : "▼"} ${Math.abs((data.trend.at(-1)!.autoMatchRate - data.trend.at(-2)!.autoMatchRate) * 100).toFixed(1)} pts vs last month` : undefined} />
         <StatCard loading={isLoading} label="Open anomalies" icon={AlertTriangle} tone="attn" value={data?.openAnomalies ?? 0} sub="Across all runs" />

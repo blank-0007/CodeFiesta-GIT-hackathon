@@ -68,7 +68,7 @@ function Dropzone({
         if (files.length) onFiles(multiple ? files : files.slice(0, 1));
       }}
       className={cn(
-        "flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed px-4 py-8 text-center transition-colors",
+        "flex flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed px-4 py-6 sm:py-8 text-center transition-colors",
         over ? "border-sys bg-sys/5" : "border-border hover:border-muted-foreground/50",
       )}
     >
@@ -167,8 +167,8 @@ function PreviewSheet({ entry, onClose }: { entry: FileEntry | null; onClose: ()
             {entry?.file.name} · first {rows.length} of {entry?.result?.rowCount.toLocaleString()} rows · {entry?.result?.detectedFormat}
           </DialogDescription>
         </div>
-        <div className="flex-1 overflow-auto">
-          <table className="w-full text-xs">
+        <div className="flex-1 overflow-auto touch-scroll">
+          <table className="w-full min-w-[500px] text-xs">
             <caption className="sr-only">First {rows.length} parsed rows</caption>
             <thead className="sticky top-0 bg-surface">
               <tr>
@@ -190,7 +190,7 @@ function PreviewSheet({ entry, onClose }: { entry: FileEntry | null; onClose: ()
             </tbody>
           </table>
         </div>
-        <div className="border-t px-5 py-3 text-right">
+        <div className="border-t px-5 py-3 pb-safe text-right">
           <Button variant="secondary" onClick={onClose}>Close</Button>
         </div>
       </SheetContent>

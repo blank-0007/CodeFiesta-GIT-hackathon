@@ -17,7 +17,7 @@ import { ROLES, type Role } from "@/lib/permissions";
 import { isMac } from "@/lib/utils";
 import { toast } from "sonner";
 
-const ORGS = [
+export const ORGS = [
   { id: "org_acme", name: "Acme Manufacturing Pvt Ltd", accounts: "HDFC ••4521 · ICICI ••8834" },
   { id: "org_acme_exports", name: "Acme Exports LLP", accounts: "Kotak ••1190" },
 ];
@@ -46,7 +46,8 @@ export function Topbar() {
         aria-keyshortcuts={isMac ? "Meta+K" : "Control+K"}
       >
         <Search className="h-4 w-4 shrink-0" aria-hidden />
-        <span className="truncate">Search runs, transaction IDs, vendors…</span>
+        <span className="truncate sm:hidden">Search…</span>
+        <span className="hidden truncate sm:inline">Search runs, transaction IDs, vendors…</span>
         <KeyboardHint keys={[isMac ? "⌘" : "Ctrl", "K"]} className="ml-auto hidden sm:inline-flex" />
       </button>
 
@@ -85,7 +86,7 @@ export function Topbar() {
         </Tip>
 
         <Tip content="Keyboard shortcuts (?)">
-          <Button variant="ghost" size="icon" aria-label="Keyboard shortcuts" onClick={() => set({ helpOpen: true })}>
+          <Button variant="ghost" size="icon" className="hidden sm:inline-flex" aria-label="Keyboard shortcuts" onClick={() => set({ helpOpen: true })}>
             <HelpCircle />
           </Button>
         </Tip>
