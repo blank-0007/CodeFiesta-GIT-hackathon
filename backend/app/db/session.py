@@ -13,11 +13,23 @@ _factory: sessionmaker[Session] | None = None
 
 def _resolve_sqlite(url: str) -> str:
     """Relative SQLite paths (sqlite:///./reconai.db) resolve against backend/, not the process cwd."""
+    import os
+    import shutil
+    from pathlib import Path
     from app.core.config import BACKEND_DIR
 
     prefix = "sqlite:///"
     path = url[len(prefix):]
     if url.startswith(prefix) and path and not path.startswith("/") and path != ":memory:":
+        if os.environ.get("VERCEL"):
+            tmp_db = Path("/tmp/reconai.db")
+            seed_db = BACKEND_DIR / path
+            if not tmp_db.exists() and seed_db.exists():
+                try:
+                    shutil.copyfile(seed_db, tmp_db)
+                except Exception:
+                    pass
+            return f"sqlite:///{tmp_db}"
         return prefix + str((BACKEND_DIR / path).resolve())
     return url
 

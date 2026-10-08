@@ -1,5 +1,6 @@
 """Runtime configuration. Loaded only from the environment (and backend/.env) via pydantic-settings."""
 
+import os
 from functools import lru_cache
 from pathlib import Path
 
@@ -14,11 +15,24 @@ class Settings(BaseSettings):
 
     # SecretStr keeps the key out of repr()/logs; read it only via get_secret_value() in the agent client.
     gemini_api_key: SecretStr | None = None
-    database_url: str = "sqlite:///./reconai.db"
-    cors_origins: str = "http://localhost:5173"
+    database_url: str = Field(default_factory=lambda: (
+        "sqlite:////tmp/reconai.db" if os.environ.get("VERCEL")
+        else "sqlite:///./reconai.db"
+    ))
+    cors_origins: str = Field(default_factory=lambda: (
+        "*" if os.environ.get("VERCEL")
+        else "http://localhost:5173"
+    ))
     auth_mode: str = Field(default="demo", pattern="^(demo|jwt)$")
-    public_base_url: str = "http://localhost:8000"
-    data_dir: Path = BACKEND_DIR / "data"
+    public_base_url: str = Field(default_factory=lambda: (
+        f"https://{os.environ['VERCEL_PROJECT_PRODUCTION_URL']}" if os.environ.get("VERCEL_PROJECT_PRODUCTION_URL")
+        else f"https://{os.environ['VERCEL_URL']}" if os.environ.get("VERCEL_URL")
+        else "http://localhost:8000"
+    ))
+    data_dir: Path = Field(default_factory=lambda: (
+        Path("/tmp/reconai_data") if os.environ.get("VERCEL")
+        else BACKEND_DIR / "data"
+    ))
     # JWT mode (see README): HS256 secret used to verify bearer tokens.
     jwt_secret: SecretStr | None = None
     # Test hook: run the pipeline inline instead of as a background task.
