@@ -1,0 +1,22 @@
+[
+  {
+    "name": "HDFC_Statement_Sep2026.pdf",
+    "kind": "bank",
+    "accountId": "acc_hdfc"
+  },
+  {
+    "name": "ICICI_Statement_Sep2026.csv",
+    "kind": "bank",
+    "accountId": "acc_icici"
+  },
+  {
+    "name": "Tally_DayBook_Sep2026.csv",
+    "kind": "ledger",
+    "accountId": null
+  },
+  {
+    "name": "HDFC_Statement_Sep2026_scanned.pdf",
+    "kind": "bank",
+    "accountId": "acc_hdfc"
+  }
+]

@@ -1,0 +1,32 @@
+# Node / Vite
+node_modules
+dist
+*.local
+coverage
+*.tsbuildinfo
+.DS_Store
+
+# Secrets — never commit real env files
+.env
+.env.*
+!.env.example
+backend/.env
+
+# Backend (Python)
+backend/.venv
+.venv
+backend/*.db
+backend/*.db-*
+backend/data/uploads
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+
+# Playwright
+playwright-report/
+test-results/
+e2e/.auth/
+playwright/.cache/

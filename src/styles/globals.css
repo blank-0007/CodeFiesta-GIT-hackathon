@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Colour tokens are RGB channels so Tailwind can apply opacity (bg-sys/10).
+ * Dark is the default; light mode uses deeper accent shades for AA contrast.
+ */
+@layer base {
+  :root {
+    --background: 247 248 251;
+    --surface: 255 255 255;
+    --surface-2: 241 243 247;
+    --border: 222 227 236;
+    --foreground: 15 23 42;
+    --muted-foreground: 82 94 116;
+    --on-accent: 255 255 255;
+
+    --sys: 8 145 178;
+    --attn: 194 65 12;
+    --crit: 220 38 38;
+    --warn: 180 83 9;
+    --ai: 124 58 237;
+    --ok: 5 150 105;
+  }
+
+  .dark {
+    --background: 11 15 25; /* #0B0F19 */
+    --surface: 18 24 38; /* #121826 */
+    --surface-2: 26 34 51; /* #1A2233 */
+    --border: 36 44 61; /* #242C3D */
+    --foreground: 226 232 240;
+    --muted-foreground: 148 160 184;
+    --on-accent: 11 15 25;
+
+    --sys: 34 211 238; /* #22D3EE */
+    --attn: 251 146 60; /* #FB923C */
+    --crit: 248 113 113; /* #F87171 */
+    --warn: 251 191 36; /* #FBBF24 */
+    --ai: 167 139 250; /* #A78BFA */
+    --ok: 52 211 153; /* #34D399 */
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-sys ring-offset-2 ring-offset-background;
+  }
+
+  ::selection {
+    @apply bg-sys/30;
+  }
+
+  /* Thin, theme-aware scrollbars */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--border)) transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .num {
+    @apply font-mono tabular-nums;
+  }
+
+  /* Table density — applied via <html data-density>. */
+  .dt-cell {
+    @apply px-3 py-2.5;
+  }
+  [data-density="compact"] .dt-cell {
+    @apply px-2.5 py-1;
+  }
+  .dt-row {
+    height: 44px;
+  }
+  [data-density="compact"] .dt-row {
+    height: 32px;
+  }
+
+  .card {
+    @apply rounded-lg border bg-surface;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden rounded-md bg-surface-2;
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full;
+    background: linear-gradient(90deg, transparent, rgb(var(--foreground) / 0.06), transparent);
+    animation: shimmer 1.4s infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

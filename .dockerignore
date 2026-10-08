@@ -1,0 +1,17 @@
+node_modules
+dist
+coverage
+.git
+.env
+.env.*
+!.env.example
+*.local
+backend/.venv
+backend/*.db
+backend/*.db-*
+backend/data/uploads
+backend/.env
+**/__pycache__
+playwright-report
+test-results
+e2e/.auth
